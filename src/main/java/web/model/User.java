@@ -1,12 +1,17 @@
 package web.model;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
-@Data
-@NoArgsConstructor
+
 @Entity
-@Table (name = "users")
+@NoArgsConstructor
+@Getter
+@Setter
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
