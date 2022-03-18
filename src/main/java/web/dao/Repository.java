@@ -9,6 +9,6 @@ import web.model.User;
 public interface Repository extends JpaRepository<User,Long> {
     @Transactional
     @Modifying
-    @Query("update User u set u.name = ?2, u.surname = ?2 where u.id = ?1")
+    @Query("update User u set u.name = ?2, u.surname = ?3 where u.id = ?1")
     void update(long id, String name, String surname);
 }
