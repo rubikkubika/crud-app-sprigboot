@@ -1,6 +1,5 @@
 package web.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +19,15 @@ public class User {
     String name;
     @Column
     String surname;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
 
     public User(String name, String surname) {
         this.name = name;

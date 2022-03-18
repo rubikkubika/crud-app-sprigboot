@@ -11,8 +11,7 @@ import web.model.User;
 import java.util.List;
 
 @Service
-
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl {
     private DaoImpl daoImpl;
 
     @Autowired
@@ -20,11 +19,28 @@ public class UserServiceImpl implements UserService {
         this.daoImpl = daoImpl;
     }
 
+    @Transactional
     public List<User> getAllUser() {
         return daoImpl.getAllUser();
     }
-@Transactional
+
+    @Transactional
     public void saveUser(User user) {
         daoImpl.saveUser(user);
+    }
+
+    @Transactional
+    public User getUserById(long id) {
+        return daoImpl.getUserById(id);
+    }
+
+    @Transactional
+    public void update(long id, User user) {
+        daoImpl.update(id, user);
+    }
+
+    @Transactional
+    public void deleteByID(long id) {
+        daoImpl.deleteById(id);
     }
 }
