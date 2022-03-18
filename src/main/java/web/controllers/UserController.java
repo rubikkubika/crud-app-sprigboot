@@ -22,7 +22,6 @@ public class UserController {
     public String getAllUser(ModelMap model) {
         List<User> userList = userService.getAllUser();
         model.addAttribute("users", userList);
-
         return "users";
     }
 
@@ -46,7 +45,7 @@ public class UserController {
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        userService.update(id, user);
+        userService.update(id, user.getName(),user.getSurname());
         return "redirect:/";
     }
 

@@ -6,41 +6,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.Dao;
 import web.dao.DaoImpl;
+import web.dao.Repository;
 import web.model.User;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl {
-    private DaoImpl daoImpl;
+    private Repository repository;
 
     @Autowired
-    public UserServiceImpl(DaoImpl daoImpl) {
-        this.daoImpl = daoImpl;
+    public UserServiceImpl(Repository repository) {
+        this.repository = repository;
     }
 
     @Transactional
     public List<User> getAllUser() {
-        return daoImpl.getAllUser();
+        return repository.findAll();
     }
 
     @Transactional
     public void saveUser(User user) {
-        daoImpl.saveUser(user);
+        repository.save(user);
     }
 
     @Transactional
     public User getUserById(long id) {
-        return daoImpl.getUserById(id);
+        return repository.getById(id);
     }
 
     @Transactional
-    public void update(long id, User user) {
-        daoImpl.update(id, user);
+    public void update(long id, String name, String surname) {
+        repository.update(id, name, surname);
     }
 
     @Transactional
     public void deleteByID(long id) {
-        daoImpl.deleteById(id);
+        repository.deleteById(id);
     }
 }
